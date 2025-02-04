@@ -21,7 +21,9 @@ app.use(cookieParser())
 app.use(cors({
     origin: process.env.FRONTEND_URL || 'http://localhost:5173' || 'https://tmsys.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true  // ✅ Allow cookies to be sent
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], 
+    credentials: true,
+    optionsSuccessStatus: 200,
 }));
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: true }))
